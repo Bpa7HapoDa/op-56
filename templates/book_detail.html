@@ -7,3 +7,15 @@
 <p>кол-во страниц = {{ book_id.size }}</p>
 <p>{{book_id.tags }}</p>
 <p>{{ book_id.email }}</p>
+<h2>
+    Отзывы: 
+    <ol>
+    {% for i in book_id.post.all %}
+    <li>
+        <h3>{{ i.stars }}</h3>
+        <p>{{ i.text }}</p>
+    </li>
+
+    {% endfor %}
+    </ol>
+</h2>

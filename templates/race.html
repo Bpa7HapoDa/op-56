@@ -1,0 +1,11 @@
+<h1>Туры</h1>
+    <ol>
+    {% for i in race %}
+    <li>
+        <h2>{{ i.member }}</h2>
+        <p>{{ i.created_at}}</p>
+        <p>{{ i.race_name}}</p>    
+    </li>
+
+    {% endfor %}
+    </ol>
