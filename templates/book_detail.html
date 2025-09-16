@@ -1,0 +1,9 @@
+ <h2>{{ book_id.title }}</h2>
+<img src="{{book_id.images.url}}" alt="" width="400" height="350">
+<p>{{ book_id.created_at}}</p>
+<fieldset>{{ book_id.description}}</fieldset>
+<p>{{ book_id.category_books }}</p>
+<a href='{{ book_id.link_book }}' target="_blank"></a>
+<p>кол-во страниц = {{ book_id.size }}</p>
+<p>{{book_id.tags }}</p>
+<p>{{ book_id.email }}</p>

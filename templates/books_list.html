@@ -1,0 +1,14 @@
+
+<h1>Книги</h1>
+    <ol>
+    {% for i in books_list %}
+    <li>
+        <h2>{{ i.title }}</h2>
+        <img src="{{i.images.url}}" alt="" width="400" height="350">
+        <p>{{ i.created_at}}</p>
+        <fieldset>{{ i.description}}</fieldset>
+        <a href="/books_list/{{ i.id }}">Подробнее </a>
+    </li>
+
+    {% endfor %}
+    </ol>
