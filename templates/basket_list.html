@@ -1,0 +1,19 @@
+
+<h2>BASKET</h2>
+
+<ol>
+    <a href="{% url 'create_basket' %}">Добавить</a>
+    {% for i in basket %}
+    <li>
+
+        <h2>{{ i.title }}</h2>      
+        <p>{{ i.created_at }}</p>
+        <p>{{ i.choice_type }} </p>
+        <a href="/delete_basket/{{i.id}}/">Удалить</a>
+        <a href="/update_basket/{{i.id}}/">Изменить</a>
+        <a href="/basket_detail/{{i.id}}/">Просмотр</a>
+        
+    </li>
+
+    {% endfor %}
+</ol>

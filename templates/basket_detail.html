@@ -1,0 +1,16 @@
+
+<ol>
+{% comment %} {% for i in basket %} {% endcomment %}
+    <li>
+
+        <h2>{{ basket_id.title }}</h2>      
+        <p>{{ basket_id.created_at }}</p>
+        <p>{{ basket_id.card_number }}</p> 
+        <p>{{ basket_id.phone_number }}</p>
+        <p>{{ basket_id.expiry_date }}</p>
+        <p>{{ basket_id.cvv_code }}</p>
+        <p>{{ basket_id.choice_type }}</p>
+        <a href="{% url 'basket_list' %}">На главную</a>
+    </li>
+{% comment %} {% endfor %} {% endcomment %}
+</ol>
