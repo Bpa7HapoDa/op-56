@@ -15,6 +15,8 @@ urlpatterns = [
     path('books_list/<int:id>/', book_detail, name='book_detail'),
     path('race/', race, name='race'),
     path('', include('basket.urls')),
+    path('clothes/', include('clothes.urls')),     
+    path('accounts/', include('accounts.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

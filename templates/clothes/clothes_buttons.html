@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Одежда — фильтр по возрасту</h1>
+<div>
+{% for t in tags %}
+    <a href="?tag={{ t }}">
+        <button {% if selected == t %}disabled{% endif %}>#{{ t }}</button>
+    </a>
+{% endfor %}
+</div>
+<ul>
+{% for item in clothes %}
+    <li>{{ item.title }} — {{ item.price }} — {% for tg in item.tags.all %}{{ tg.name }} {% endfor %}</li>
+{% empty %}
+    <li>Ничего не найдено</li>
+{% endfor %}
+</ul>
+{% endblock %}

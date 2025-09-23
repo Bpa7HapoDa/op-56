@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Книги — поиск и пагинация</h1>
+<form method="get">
+    <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск книги...">
+    <button type="submit">Поиск</button>
+</form>
+<ul>
+{% for b in books %}
+    <li>{{ b.title }} {% if b.author %}- {{ b.author }}{% endif %}</li>
+{% empty %}
+    <li>Ничего не найдено</li>
+{% endfor %}
+</ul>
+
+{% if is_paginated %}
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+      <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.previous_page_number }}">пред.</a>
+    {% endif %}
+    <span>Стр {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.next_page_number }}">след.</a>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

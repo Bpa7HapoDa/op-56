@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Список одежды</h1>
+<div>
+    <a href="{% url 'clothes:buttons' %}">Кнопки фильтра</a> |
+    <a href="{% url 'clothes:list' %}">Все (страница)</a>
+</div>
+<ul>
+{% for item in clothes %}
+    <li>{{ item.title }} — {{ item.price }} — {% for t in item.tags.all %}{{ t.name }} {% endfor %}</li>
+{% empty %}
+    <li>Нет элементов</li>
+{% endfor %}
+</ul>
+
+{% if is_paginated %}
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+    {% endif %}
+    <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">следующая</a>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

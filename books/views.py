@@ -29,3 +29,24 @@ def book_en(request):
 def book_usa(request):
     if request.method == 'GET':
         return HttpResponse('An america book')
+
+from django.views.generic import ListView
+from django.shortcuts import render
+try:
+    from .models import Books
+except Exception:
+    from django.apps import apps
+    Book = apps.get_model('books','Book') if apps.is_installed('books') else None
+
+class BookListView(ListView):
+    model = Books
+    template_name = 'books/book_list.html'
+    context_object_name = 'books'
+    paginate_by = 10
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        q = self.request.GET.get('q')
+        if q:
+            qs = qs.filter(title__icontains=q) | qs.filter(author__icontains=q)
+        return qs
